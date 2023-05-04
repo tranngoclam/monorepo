@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"lib"
+	"lib/pkg"
 	"os"
 )
 
@@ -11,6 +11,6 @@ func main() {
 }
 
 func foo() int {
-	fmt.Printf("Hello World! 1 + 2 = %d\n", lib.SumInt(1, 2))
+	fmt.Printf("Hello World! 1 + 2 = %d\n", pkg.SumInt(1, 2))
 	return 0
 }
