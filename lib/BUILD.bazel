@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "lib",
+    srcs = ["sum.go"],
+    importpath = "lib",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "lib_test",
+    srcs = ["sum_test.go"],
+    embed = [":lib"],
+    deps = ["@com_github_stretchr_testify//require"],
+)

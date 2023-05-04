@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "bar_lib",
+    srcs = ["main.go"],
+    importpath = "bar",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_gorilla_mux//:mux"],
+)
+
+go_binary(
+    name = "bar",
+    embed = [":bar_lib"],
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "bar_test",
+    srcs = ["main_test.go"],
+    embed = [":bar_lib"],
+)

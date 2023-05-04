@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "foo_lib",
+    srcs = ["main.go"],
+    importpath = "foo",
+    visibility = ["//visibility:private"],
+    deps = ["//lib"],
+)
+
+go_binary(
+    name = "foo",
+    embed = [":foo_lib"],
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "foo_test",
+    srcs = ["main_test.go"],
+    embed = [":foo_lib"],
+    deps = ["@com_github_stretchr_testify//require"],
+)
