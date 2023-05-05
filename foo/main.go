@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"lib/pkg"
+	"mylib/pkg"
 	"os"
 )
 

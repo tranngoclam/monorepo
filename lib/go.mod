@@ -1,4 +1,4 @@
-module lib
+module mylib
 
 go 1.20
 
