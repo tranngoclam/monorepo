@@ -5,7 +5,10 @@ go_library(
     srcs = ["main.go"],
     importpath = "bar",
     visibility = ["//visibility:private"],
-    deps = ["@com_github_gorilla_mux//:mux"],
+    deps = [
+        "//lib/pkg",
+        "@com_github_gorilla_mux//:mux",
+    ],
 )
 
 go_binary(

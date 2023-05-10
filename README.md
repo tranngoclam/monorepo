@@ -1,5 +1,7 @@
 # Go Workspace with Bazel
 
+[![Continuous Integration](https://github.com/tranngoclam/go-workspace-bazel/actions/workflows/ci.yaml/badge.svg)](https://github.com/tranngoclam/go-workspace-bazel/actions/workflows/ci.yaml)
+
 ## Prerequisites
 
 - Go 1.20+
