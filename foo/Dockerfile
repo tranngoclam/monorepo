@@ -9,15 +9,11 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     --mount=type=bind,source=./lib/go.sum,target=./lib/go.sum \
     go work init ./foo ./lib && go work sync
 
-COPY foo foo
-
-COPY lib lib
-
-WORKDIR /src/foo
-
 RUN --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
-    CGO_ENABLED=0 go build -x -o /bin/foo .
+    --mount=type=bind,source=./foo,target=./foo \
+    --mount=type=bind,source=./lib,target=./lib \
+    CGO_ENABLED=0 go build -x -o /bin/foo foo
 
 FROM gcr.io/distroless/static-debian11
 
