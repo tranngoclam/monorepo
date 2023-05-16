@@ -1,0 +1,21 @@
+version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: github.com/tranngoclam/go-workspace-bazel
+    except:
+      - buf.build/googleapis/googleapis
+      - buf.build/grpc-ecosystem/grpc-gateway
+plugins:
+  - plugin: buf.build/grpc/go:v1.3.0
+    out: lib/gen
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/protocolbuffers/go:v1.30.0
+    out: lib/gen
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/grpc-ecosystem/gateway:v2.15.2
+    out: lib/gen
+    opt:
+      - paths=source_relative
