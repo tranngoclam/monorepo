@@ -1,0 +1,25 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@io_bazel_rules_go//proto:def.bzl", "go_proto_library")
+
+proto_library(
+    name = "pb_proto",
+    srcs = ["bar.proto"],
+    visibility = ["//visibility:public"],
+    deps = ["//proto:proto_proto"],
+)
+
+go_proto_library(
+    name = "pb_go_proto",
+    importpath = "go-sdk/pb",
+    proto = ":pb_proto",
+    visibility = ["//visibility:public"],
+    deps = ["//proto:money_proto"],
+)
+
+go_library(
+    name = "pb",
+    embed = [":pb_go_proto"],
+    importpath = "go-sdk/pb",
+    visibility = ["//visibility:public"],
+)
