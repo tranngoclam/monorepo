@@ -1,5 +1,3 @@
 version: v1
 directories:
-  - bar
-  - foo
-  - lib
+  - proto
