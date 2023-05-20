@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 
+	moneyv1 "gen/money/v1"
+
 	"github.com/gorilla/mux"
 )
 
@@ -17,6 +19,7 @@ func main() {
 		_, _ = w.Write([]byte(message))
 	})
 
+	_ = moneyv1.Money{}
 	log.Println("starting server at http://localhost:8080/")
 	log.Fatalln(http.ListenAndServe(":8080", r))
 }
