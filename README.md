@@ -12,7 +12,7 @@
 - Initialize `go.work`
 
 ```
-go work init ./bar ./foo ./lib
+go work init ./bar ./foo ./lib ./api
 ```
 
 - Sync modules in workspace
@@ -50,6 +50,12 @@ bazelisk build //...
 - Run binary
 
 ```
-bazelisk run //foo:foo
-bazelisk run //bar:bar
+bazelisk run //foo
+bazelisk run //bar
+```
+
+- Run all
+
+```
+tilt up
 ```

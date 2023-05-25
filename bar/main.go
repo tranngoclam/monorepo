@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	moneyv1 "gen/money/v1"
+	moneyv1 "api/gen/money/v1"
 
 	"github.com/gorilla/mux"
 )

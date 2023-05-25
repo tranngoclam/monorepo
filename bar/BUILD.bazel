@@ -6,7 +6,7 @@ go_library(
     importpath = "bar",
     visibility = ["//visibility:private"],
     deps = [
-        "//gen/money/v1:money",
+        "//api/gen/money/v1:money",
         "//lib/pkg",
         "@com_github_gorilla_mux//:mux",
     ],

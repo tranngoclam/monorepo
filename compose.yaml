@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  foo:
+    image: foo
+    container_name: foo
+
+  bar:
+    image: bar
+    container_name: bar
+    ports:
+      - "8080:8080"
