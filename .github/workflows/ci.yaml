@@ -18,7 +18,7 @@ jobs:
           path: |
             ~/.cache/go-build
             ~/go/pkg/mod
-          key: go-test-${{ github.sha }}
+          key: go-test-${{ hashFiles('foo/go.sum') }}
           restore-keys: |
             go-test-
 
