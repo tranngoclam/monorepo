@@ -20,4 +20,5 @@ jobs:
           cache: true
           cache-dependency-path: foo/go.sum
 
-      - run: go test -v foo
+      - run: go test -race -vet=off -coverprofile=coverage.out -timeout 20m ./...
+        working-directory: foo
