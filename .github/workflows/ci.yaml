@@ -15,9 +15,9 @@ jobs:
 
       - uses: actions/setup-go@v4
         with:
-          go-version-file: go.work
+          go-version-file: foo/go.mod
           check-latest: true
           cache: true
-          cache-dependency-path: go.work.sum
+          cache-dependency-path: foo/go.sum
 
-      - run: go test foo
+      - run: go test -v foo
