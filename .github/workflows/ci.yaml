@@ -20,7 +20,7 @@ jobs:
             ~/go/pkg/mod
           key: go-test-${{ hashFiles('foo/go.sum') }}
           restore-keys: |
-            go-test-
+            go-test-${{ hashFiles('foo/go.sum') }}
 
       - uses: actions/setup-go@v4
         with:
