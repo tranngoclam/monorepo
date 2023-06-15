@@ -17,8 +17,6 @@ jobs:
         with:
           go-version-file: foo/go.mod
           check-latest: true
-          cache: true
-          cache-dependency-path: foo/go.sum
 
       - run: go test -race ./...
         working-directory: foo
