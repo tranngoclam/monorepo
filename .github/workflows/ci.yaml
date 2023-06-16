@@ -9,25 +9,30 @@ on:
 jobs:
   test:
     name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
+    uses: tranngoclam/go-workspace-bazel/.github/workflows/action.yaml@test/go-cache
+    with:
+      target: foo
 
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cache/go-build
-            ~/go/pkg/mod
-          key: go-cache-${{ hashFiles('foo/go.sum') }}
-          restore-keys: |
-            go-cache-${{ hashFiles('foo/go.sum') }}
 
-      - uses: actions/setup-go@v4
-        with:
-          go-version-file: foo/go.mod
-          check-latest: true
-          cache: false
-
-      - run: go test -race --cover foo/...
-      - run: go mod download -C foo
-      - run: go install foo
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#
+#      - uses: actions/cache@v3
+#        with:
+#          path: |
+#            ~/.cache/go-build
+#            ~/go/pkg/mod
+#          key: go-cache-${{ hashFiles('foo/go.sum') }}
+#          restore-keys: |
+#            go-cache-${{ hashFiles('foo/go.sum') }}
+#
+#      - uses: actions/setup-go@v4
+#        with:
+#          go-version-file: foo/go.mod
+#          check-latest: true
+#          cache: false
+#
+#      - run: go test -race --cover foo/...
+#      - run: go mod download -C foo
+#      - run: go install foo

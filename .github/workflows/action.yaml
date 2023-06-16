@@ -1,0 +1,32 @@
+on:
+  workflow_call:
+    inputs:
+      target:
+        required: true
+        type: string
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: go-cache-${{ inputs.target }}-${{ hashFiles(format('{0}/go.sum', inputs.target)) }}
+          restore-keys: |
+            go-cache-${{ inputs.target }}-${{ hashFiles(format('{0}/go.sum', inputs.target)) }}
+
+      - uses: actions/setup-go@v4
+        with:
+          go-version-file: ${{ inputs.target }}/go.mod
+          check-latest: true
+          cache: false
+
+      - run: go test -race --cover ${{ inputs.target }}/...
+      - run: go mod download -C ${{ inputs.target }}
+      - run: go install ${{ inputs.target }}
