@@ -18,9 +18,9 @@ jobs:
           path: |
             ~/.cache/go-build
             ~/go/pkg/mod
-          key: go-test-${{ hashFiles('foo/go.sum') }}
+          key: go-cache-${{ hashFiles('foo/go.sum') }}
           restore-keys: |
-            go-test-${{ hashFiles('foo/go.sum') }}
+            go-cache-${{ hashFiles('foo/go.sum') }}
 
       - uses: actions/setup-go@v4
         with:
@@ -28,7 +28,6 @@ jobs:
           check-latest: true
           cache: false
 
-      - run: go test -race --cover ./...
-        working-directory: foo
+      - run: go test -race --cover foo/...
       - run: go mod download -C foo
       - run: go install foo
