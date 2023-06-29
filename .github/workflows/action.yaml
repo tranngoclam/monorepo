@@ -27,6 +27,6 @@ jobs:
           check-latest: true
           cache: false
 
-      - run: go test -race --cover ${{ inputs.target }}/...
+      - run: go test -race -coverprofile=coverage.out ${{ inputs.target }}/...
       - run: go mod download -C ${{ inputs.target }}
       - run: go install ${{ inputs.target }}
