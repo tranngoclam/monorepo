@@ -34,4 +34,4 @@ jobs:
           go-version-file: ${{ matrix.dir }}/go.mod
       - run: |
           go work sync
-          go test -v ${{ matrix.dir }}
+          go test -v ${{ matrix.dir }}/...
