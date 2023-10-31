@@ -24,13 +24,12 @@ jobs:
   test-go:
     name: Test (Go)
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dir: [api, bar, foo, lib]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v4
         with:
-          go-version-file: ${{ matrix.dir }}/go.mod
-      - run: go test -v ./...
-        working-directory: ${{ matrix.dir }}
+          go-version-file: foo/go.mod
+          cache-dependency-path: foo/go.sum
+          cache: true
+      - run: |
+          go test -v foo/...
