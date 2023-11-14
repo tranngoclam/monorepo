@@ -10,6 +10,8 @@ jobs:
     name: Build Container Image
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
 
@@ -20,10 +22,10 @@ jobs:
           images: |
             ghcr.io/tranngoclam/monorepo-foo
           tags: |
-            type=sha,enable=true,suffix=-amd64,format=long
-            type=sha,enable=true,suffix=-arm64,format=long
-            type=raw,enable=true,suffix=-amd64,value=latest
-            type=raw,enable=true,suffix=-arm64,value=latest
+            type=sha,enable=true,prefix=,suffix=-amd64,format=long
+            type=sha,enable=true,prefix=,suffix=-arm64,format=long
+            type=raw,enable=true,value=latest,suffix=-amd64
+            type=raw,enable=true,value=latest,suffix=-arm64
 
       - name: Build/Tag/Push Docker Image
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
