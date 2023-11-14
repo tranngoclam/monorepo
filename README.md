@@ -1,4 +1,4 @@
-# Go Workspace with Bazel
+# Monorepo
 
 [![Continuous Integration](https://github.com/tranngoclam/go-workspace-bazel/actions/workflows/ci.yaml/badge.svg)](https://github.com/tranngoclam/go-workspace-bazel/actions/workflows/ci.yaml)
 
