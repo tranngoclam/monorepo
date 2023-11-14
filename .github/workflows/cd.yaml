@@ -22,8 +22,8 @@ jobs:
           tags: |
             type=sha,enable=true,suffix=-amd64,format=long
             type=sha,enable=true,suffix=-arm64,format=long
-            type=raw,enable=true,prefix=latest,suffix=-amd64
-            type=raw,enable=true,prefix=latest,suffix=-arm64
+            type=raw,enable=true,suffix=-amd64,value=latest
+            type=raw,enable=true,suffix=-arm64,value=latest
 
       - name: Build/Tag/Push Docker Image
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
