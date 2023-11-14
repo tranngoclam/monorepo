@@ -25,8 +25,8 @@ jobs:
           images: |
             ghcr.io/tranngoclam/monorepo-${{ matrix.service }}
           tags: |
-            type=sha,enable=true,format=long
-            type=raw,enable=true,value=latest
+            type=sha,enable=true,format=long,priority=200
+            type=raw,enable=true,value=latest,priority=100
 
       - name: Build/Tag/Push Docker Image
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
