@@ -33,13 +33,6 @@ jobs:
           context: .
           file: foo/Dockerfile
           platforms: linux/amd64,linux/arm64
-          push: true
+          push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Create and push manifest images
-        run: |
-          docker buildx imagetools create \
-            --tag ghcr.io/tranngoclam/monorepo-foo:latest \
-            ghcr.io/tranngoclam/monorepo-foo:latest-amd64 \
-            ghcr.io/tranngoclam/monorepo-foo:latest-arm64
