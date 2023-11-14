@@ -3,12 +3,15 @@ name: Continuous Deployment
 on:
   push:
     branches:
-      - "**"
+      - main
 
 jobs:
   cd:
     name: Build Container Image
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [ bar, foo ]
     steps:
       - uses: actions/checkout@v4
 
@@ -20,7 +23,7 @@ jobs:
         id: meta
         with:
           images: |
-            ghcr.io/tranngoclam/monorepo-foo
+            ghcr.io/tranngoclam/monorepo-${{ matrix.service }}
           tags: |
             type=sha,enable=true,format=long
             type=raw,enable=true,value=latest
@@ -29,7 +32,7 @@ jobs:
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
           context: .
-          file: foo/Dockerfile
+          file: ${{ matrix.service }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: false
           tags: ${{ steps.meta.outputs.tags }}
