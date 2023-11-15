@@ -23,10 +23,16 @@ jobs:
         id: meta
         with:
           images: |
-            ghcr.io/tranngoclam/monorepo-${{ matrix.service }}
+            ghcr.io/${{ github.actor }}/monorepo-${{ matrix.service }}
           tags: |
             type=sha,enable=true,format=long,priority=200
             type=raw,enable=true,value=latest,priority=100
+
+      - uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build/Tag/Push Docker Image
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
@@ -34,6 +40,6 @@ jobs:
           context: .
           file: ${{ matrix.service }}/Dockerfile
           platforms: linux/amd64,linux/arm64
-          push: false
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
