@@ -1,6 +1,6 @@
 # Monorepo
 
-[![Continuous Integration](https://github.com/tranngoclam/go-workspace-bazel/actions/workflows/ci.yaml/badge.svg)](https://github.com/tranngoclam/go-workspace-bazel/actions/workflows/ci.yaml)
+[![Continuous Integration](https://github.com/tranngoclam/monorepo/actions/workflows/ci.yaml/badge.svg)](https://github.com/tranngoclam/monorepo/actions/workflows/ci.yaml)
 
 ## Prerequisites
 
@@ -26,32 +26,32 @@ go work sync
 - Update BUILD files
 
 ```
-bazelisk run //:gazelle
+bazel run //:gazelle
 ```
 
 - Sync go dependencies
 
 ```
-bazelisk run //:gazellel-update-repos
+bazel run //:gazellel-update-repos
 ```
 
 - Run tests
 
 ```
-bazelisk test //...
+bazel test //...
 ```
 
 - Build binaries
 
 ```
-bazelisk build //...
+bazel build //...
 ```
 
 - Run binary
 
 ```
-bazelisk run //foo
-bazelisk run //bar
+bazel run //foo
+bazel run //bar
 ```
 
 - Run all

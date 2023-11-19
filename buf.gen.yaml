@@ -2,7 +2,7 @@ version: v1
 managed:
   enabled: true
   go_package_prefix:
-    default: github.com/tranngoclam/go-workspace-bazel/gen
+    default: github.com/tranngoclam/monorepo/gen
     except:
       - buf.build/googleapis/googleapis
       - buf.build/grpc-ecosystem/grpc-gateway
@@ -11,11 +11,11 @@ plugins:
     out: api/gen
     opt:
       - paths=source_relative
-  - plugin: buf.build/protocolbuffers/go:v1.30.0
+  - plugin: buf.build/protocolbuffers/go:v1.31.0
     out: api/gen
     opt:
       - paths=source_relative
-  - plugin: buf.build/grpc-ecosystem/gateway:v2.15.2
+  - plugin: buf.build/grpc-ecosystem/gateway:v2.18.1
     out: api/gen
     opt:
       - paths=source_relative
