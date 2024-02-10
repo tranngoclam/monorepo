@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-- Go 1.21+
+- Go 1.22+
 - Bazelisk
 
 ## Using Go Workspace

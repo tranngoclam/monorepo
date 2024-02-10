@@ -11,11 +11,11 @@ plugins:
     out: api/gen
     opt:
       - paths=source_relative
-  - plugin: buf.build/protocolbuffers/go:v1.31.0
+  - plugin: buf.build/protocolbuffers/go:v1.32.0
     out: api/gen
     opt:
       - paths=source_relative
-  - plugin: buf.build/grpc-ecosystem/gateway:v2.18.1
+  - plugin: buf.build/grpc-ecosystem/gateway:v2.19.1
     out: api/gen
     opt:
       - paths=source_relative
