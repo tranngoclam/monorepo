@@ -29,6 +29,8 @@ jobs:
           tags: |
             type=sha,enable=true,format=long,priority=200
             type=raw,enable=true,value=latest,priority=100
+          flavor: |
+            suffix=monorepo
 
       - uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3.3.0
         with:
