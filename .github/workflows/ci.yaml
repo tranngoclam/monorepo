@@ -47,7 +47,7 @@ jobs:
     needs: test-prepare
     if: ${{ needs.test-prepare.outputs.run == 'true' }}
     steps:
-      - run: exit 1
+      - run: echo 1
 
   test-2:
     runs-on: ubuntu-latest
