@@ -13,7 +13,7 @@ jobs:
     name: Test (Bazel)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: bazelbuild/setup-bazelisk@v3
       - uses: actions/cache@v4
         with:
@@ -25,7 +25,7 @@ jobs:
     name: Test (Go)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-go@v5
         with:
           go-version-file: foo/go.mod
