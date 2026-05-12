@@ -1,5 +1,5 @@
 module api
 
-go 1.22.0
+go 1.23
 
-require google.golang.org/protobuf v1.33.0
+require google.golang.org/protobuf v1.36.11
